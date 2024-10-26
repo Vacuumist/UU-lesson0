@@ -13,8 +13,8 @@ for i in range(len(numbers)):
             is_prime = False            # Not prime flag if the number is divisible by j
             break                       # No need to check for other dividers when one has been already found
     if is_prime:
-        primes.append(numbers[i])       # Adds only numbers with True is in is_prime flag
+        primes.append(numbers[i])       # Adds only numbers if True is in is_prime flag
     else:
-        not_primes.append(numbers[i])   # Adds only numbers with False is in is_prime flag
+        not_primes.append(numbers[i])   # Adds only numbers if False is in is_prime flag
 print("Primes:", primes)
 print("Not primes:", not_primes)
