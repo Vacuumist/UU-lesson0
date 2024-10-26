@@ -1,4 +1,5 @@
-# A sample list. This code finds primes and ot prime natural numbers in and works for any lists.
+# This code finds primes and not prime natural numbers among list elements and outputs them separately.
+# A sample list:
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 primes, not_primes = [], []             # Create empty lists for output
