@@ -1,8 +1,7 @@
 def not_email(address):     # Проверка на формат e-mail и домены.
     wrong_address = False
-    if '@' not in address:
-        wrong_address = True
-    if ".com" not in address and ".ru" not in address and ".net" not in address:
+    good_domains = ('.com', '.ru', '.net')
+    if '@' not in address or not address.endswith(good_domains):
         wrong_address = True
     return wrong_address
 
@@ -24,4 +23,4 @@ send_email('Вы видите это сообщение как лучший ст
 send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
 send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru')
 send_email(sender='University.HELP@gmail.com', recipient='turban.student@mail.ru', message='Доп. тест 1')
-send_email('Доп. тест 2', 'University.HELP@gmail.com')
+send_email('Доп. тест 2', 'University.HELP@Gmail.COM')
