@@ -11,8 +11,17 @@ class House:
             for i in range(1, new_floor + 1):
                 print(i)
 
+    def __len__(self):
+        return self.number_of_floors
+
+    def __str__(self):
+        return f'Название: "{self.name}", кол-во этажей: {self.number_of_floors}'
+
 pythonhouse = House('ЖК на ул. Питонов, 42', 22)
 natrixhouse = House('Дом на пр. Ужей, 17', 14)
 
-pythonhouse.go_to(7)
-natrixhouse.go_to(17)
+print(pythonhouse)
+print(natrixhouse)
+
+print(len(pythonhouse))
+print(len(natrixhouse))
