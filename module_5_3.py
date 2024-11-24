@@ -173,7 +173,7 @@ print(pythonhouse == natrixhouse)
 pythonhouse += 7
 print(pythonhouse)
 
-natrixhouse= 7 + natrixhouse
+natrixhouse = 7 + natrixhouse
 print(natrixhouse)
 
 print(pythonhouse > natrixhouse)
@@ -189,7 +189,10 @@ print(floor_section(pythonhouse, seq1))
 print(floor_section(natrixhouse, seq2))
 print()
 
-pythonhouse *= int(input(f'Во сколько раз увеличить высоту у объекта "{pythonhouse.name}"?   '))
-natrixhouse += int(input(f'Сколько этажей добавить объекту "{natrixhouse.name}"?   '))
+pythonhouse *= int(input(f'Во сколько раз увеличить высоту объекта "{pythonhouse.name}"?   '))
+print(pythonhouse)
 print('Теперь', floor_section(pythonhouse, seq1))
+print()
+natrixhouse += int(input(f'Сколько этажей добавить объекту "{natrixhouse.name}"?   '))
+print(natrixhouse)
 print('Теперь', floor_section(natrixhouse, seq2))
