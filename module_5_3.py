@@ -125,6 +125,40 @@ class House:
             for i in range(1, new_floor + 1):
                 print(i)
 
+def floor_section(building, floors_in_section):
+    if floors_in_section <= 0 or floors_in_section > building.number_of_floors:
+        return f'Введено некорректное число этажей. Допускаются значения от 1 до {building.number_of_floors}'
+    else:
+        if floors_in_section % 10 == 1 and floors_in_section != 11:
+            fs = 'у'
+        elif 2 <= floors_in_section % 10 <= 4 and not 12 <= floors_in_section <= 14:
+            fs = 'а'
+        else:
+            fs = 'ей'
+        sect_num = building.number_of_floors // floors_in_section
+        if sect_num == 0:
+            sn = ''
+        elif sect_num % 10 == 1 and sect_num != 11:
+            sn = f'{sect_num} секцию по {floors_in_section} этаж{fs}'
+        elif 2 <= sect_num % 10 <= 4 and not 12 <= sect_num <= 14:
+            sn = f'{sect_num} секции по {floors_in_section} этаж{fs}'
+        else:
+            sn = f'{sect_num} секций по {floors_in_section} этаж{fs}'
+        residue_floors = building.number_of_floors % floors_in_section
+        if residue_floors == 0:
+            rf = ''
+        elif residue_floors % 10 == 1 and residue_floors != 11:
+            rf = f'одну секцию в {residue_floors} этаж'
+        elif 2 <= residue_floors % 10 <= 4 and not 12 <= residue_floors <= 14:
+            rf = f'одну секцию в {residue_floors} этажа'
+        else:
+            rf = f'одну секцию в {residue_floors} этажей'
+        if sect_num != 0 and residue_floors != 0:
+            ee = ' и '
+        else:
+            ee = ''
+        return f'"{building.name}" можно разделить на {sn}{ee}{rf}.'
+
 pythonhouse = House('ЖК на ул. Питонов, 42', 12)
 natrixhouse = House('Дом на пр. Ужей, 17', 14)
 
@@ -149,7 +183,13 @@ print(pythonhouse <= natrixhouse)
 print(pythonhouse != natrixhouse)
 print()
 
-fl_seg = 5
-print(f'''"{natrixhouse.name}" можно разделить 
-на {(natrixhouse // fl_seg).number_of_floors} секций по {fl_seg} этажей 
-и одну секцию в {(natrixhouse % fl_seg).number_of_floors} этажа.''')
+seq1 = int(input(f'Сколько будет этажей в секции у объекта "{pythonhouse.name}"?   '))
+seq2 = int(input(f'Сколько будет этажей в секции у объекта "{natrixhouse.name}"?   '))
+print(floor_section(pythonhouse, seq1))
+print(floor_section(natrixhouse, seq2))
+print()
+
+pythonhouse *= int(input(f'Во сколько раз увеличить высоту у объекта "{pythonhouse.name}"?   '))
+natrixhouse += int(input(f'Сколько этажей добавить объекту "{natrixhouse.name}"?   '))
+print('Теперь', floor_section(pythonhouse, seq1))
+print('Теперь', floor_section(natrixhouse, seq2))
