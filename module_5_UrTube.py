@@ -62,7 +62,11 @@ class UrTube:
                 self.videos.append(new_vid)
 
     def get_videos(self, request):
-        return [v.title for v in self.videos if request.lower() in v.title.lower()]
+        vid_list = [v.title for v in self.videos if request.lower() in v.title.lower()]
+        if not vid_list == []:
+            return  vid_list
+        else:
+            return f'По запросу "{request}" видео не найдено.'
 
     def watch_video(self, title):
         if self.current_user is not None:   # Проверка, что пользователь вошёл в аккаунт
@@ -78,6 +82,8 @@ class UrTube:
                     print('Конец видео.')
                 else:
                     print('Вам нет 18 лет, пожалуйста покиньте страницу.')
+            else:
+                print('Такого видео на UrTube нет.')
         else:
             print('Войдите в аккаунт, чтобы смотреть видео.')
 
@@ -92,6 +98,7 @@ v2 = Video('Для чего девушкам парень программист
 ur.add(v1, v2)
 
 # Проверка поиска
+print(ur.get_videos('R2D2'))
 print(ur.get_videos('лучший'))
 print(ur.get_videos('ПРОГ'))
 
