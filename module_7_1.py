@@ -19,13 +19,13 @@ class Shop:
 
     def add(self, *products):
         warehouse = self.get_products()
+        file = open(self.__file_name, 'a')
         for p in products:
-            if str(p) not in warehouse:
-                file = open(self.__file_name, 'a')
+            if p.name not in warehouse:
                 file.write(f'{str(p)}\n')
-                file.close()
             else:
                 print(f'Продукт {p.name} уже есть в магазине')
+        file.close()
 
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
